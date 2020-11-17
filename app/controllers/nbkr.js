@@ -45,11 +45,9 @@ fetch('https://www.nbkr.kg/XML/daily.xml')
       res.status(200).send({
             message: "OK!"
           });
-
     });
-   
   })
   .catch(function(err) {  
     console.log('Fetch Error :-S', err);  
   });
-}
+};
