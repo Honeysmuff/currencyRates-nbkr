@@ -1,0 +1,25 @@
+{
+  "name": "currencyrates-nbkr",
+  "version": "1.0.0",
+  "description": "Daily exhange rates for nbkr",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nbkr",
+    "currency",
+    "rates",
+    "daily"
+  ],
+  "author": "Max",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dayjs": "^1.9.6",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "node-fetch": "^2.6.1",
+    "xml2js": "^0.4.23"
+  }
+}
