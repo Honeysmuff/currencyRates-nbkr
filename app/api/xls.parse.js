@@ -6,11 +6,12 @@ var customParseFormat = require('dayjs/plugin/customParseFormat')
 dayjs.extend(customParseFormat)
 var localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
-
 const NbkrCurrency = require("../models/nbkr.model.js");
 const getDate = (num) => {
     return XlsxPopulate.numberToDate(num);
 }
+
+
 // {
 //     2012 : [{
 //         date: '01.01.2012',
@@ -39,11 +40,9 @@ const setToDataBase = (yearData) => {
   
       });
     })
-
-    
-
-    
 }
+
+
 XlsxPopulate.fromFileAsync("./dailyrus.xlsx")
 .then(workbook => {
     

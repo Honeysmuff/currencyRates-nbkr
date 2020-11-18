@@ -8,7 +8,6 @@ dayjs.extend(customParseFormat)
 var localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
 const NbkrCurrency = require("../models/nbkr.model.js");
-
 const replace = (nbkr_currency) => {
   return nbkr_currency.replace(",", ".")
 }
