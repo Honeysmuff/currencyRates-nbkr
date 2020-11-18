@@ -8,6 +8,8 @@ const NbkrService = function(nbkr) {
     this.created_date = nbkr.created_date;
     this.updated_date = nbkr.updated_date;
     this.created_by = nbkr.created_by;
+    this.nbkr_date = nbkr.nbkr_date;
+
 };
 
 NbkrService.create = (newNbkr, result) => {

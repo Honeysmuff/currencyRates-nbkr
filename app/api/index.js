@@ -31,6 +31,7 @@ fetch('https://www.nbkr.kg/XML/daily.xml')
       eur: replace(nbkr_currency.eur),
       kzt: replace(nbkr_currency.kzt),
       rub: replace(nbkr_currency.rub),
+      nbkr_date: new Date(),
       created_date: new Date(),
       updated_date: new Date(),
       created_by: 1
