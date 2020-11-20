@@ -41,13 +41,20 @@ fetch('https://www.nbkr.kg/XML/daily.xml')
       created_by: 1
     });
 
-    NbkrService.create(nbkr, (err, data) => {
+    NbkrService.create(nbkr)
+    .then((data) => {
       res.status(200).send({
             message: "OK!"
           });
+    })
+    .catch(function(err) {  
+      res.status(500).send({
+        message: err
+      });  
     });
   })
   .catch(function(err) {  
     console.log('Fetch Error :-S', err);  
   });
 };
+

@@ -10,17 +10,12 @@ const NbkrCurrency = require("../models/nbkr.model.js");
 const getDate = (num) => {
     return XlsxPopulate.numberToDate(num);
 }
-// {
-//     2012 : [{
-//         date: '01.01.2012',
-//         usd: '46.1233',
-//         ...
-//     }...]
-// }
+exports.updateYear = (req, res) => {
+    // console.log(req.daylyData)
+
 const setToDataBase = (yearData) => {
-    yearData.map((daylyData, index) => {
+    const p = yearData.map((daylyData, index) => {
         // console.log('parseSheets', daylyData)
-      
      // nbkr.create();
     const nbkr = new NbkrCurrency({
         usd: (daylyData.usd),
@@ -32,14 +27,12 @@ const setToDataBase = (yearData) => {
         updated_date: new Date(),
         created_by: 1
       });
-      
-      
-      NbkrCurrency.create(nbkr, (err, data) => {
-  
-      });
-    })
-}
 
+     return NbkrCurrency.create(nbkr)
+    
+    })
+    return Promise.all(p)
+}
 
 XlsxPopulate.fromFileAsync("./dailyrus.xlsx")
 .then(workbook => {
@@ -66,11 +59,21 @@ XlsxPopulate.fromFileAsync("./dailyrus.xlsx")
         })
         return Object.assign(parseSheets, { [sheet.name()] : formattedDates }) 
     })
-    Object.keys(parseSheets).map((key, index) => {
+    const b = Object.keys(parseSheets).map((key, index) => {
         console.log(parseSheets[key])
-        setToDataBase(parseSheets[key])
+        return setToDataBase(parseSheets[key])
     })
-    // setToDataBase(parseSheets['2012'])
+    return Promxise.all(b)
+    .then((data) => {
+        res.status(200).send({
+              message: "OK!"
+            });
+    })
+      .catch(function(err) {  
+        res.status(500).send({
+          message: err
+        });  
+      });
 });
-
+}
 
