@@ -12,16 +12,16 @@ const replace = (nbkr_currency) => {
   return nbkr_currency.replace(",", ".")
 }
 
-fetch('https://www.nbkr.kg/XML/daily.xml')  
+fetch('https://www.nbkr.kg/XML/daily.xml')
   .then((response) => response.text())
-  .then((string) => xml2js.parseStringPromise(string, ))
+  .then((string) => xml2js.parseStringPromise(string,))
   .then(result => {
     let nbkr_currency = {};
     nbkr_currency.nbkr_date = dayjs(result.CurrencyRates.$.Date, 'DD.MM.YYYY').format('YYYY-MM-DD');
-    nbkr_currency.created_date = new Date(); 
+    nbkr_currency.created_date = new Date();
     nbkr_currency.updated_date = new Date();
     result.CurrencyRates.Currency.forEach((item) => {
-    nbkr_currency[item.$.ISOCode.toLowerCase()] = item.Value[0];
+      nbkr_currency[item.$.ISOCode.toLowerCase()] = item.Value[0];
     })
 
     // nbkr.create();
@@ -35,14 +35,14 @@ fetch('https://www.nbkr.kg/XML/daily.xml')
       updated_date: new Date(),
       created_by: 1
     });
-    
-    
+
+
     NbkrCurrency.create(nbkr, (err, data) => {
 
     });
   })
-  .catch(function(err) {  
-    console.log('Fetch Error :-S', err);  
+  .catch(function (err) {
+    console.log('Fetch Error :-S', err);
   });
 
-  
+

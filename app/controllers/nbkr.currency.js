@@ -9,7 +9,7 @@ const NbkrCurrency = require("../models/nbkr.model.js");
 
 
 exports.create = (req, res) => {
-console.log(req.body)
+  console.log(req.body)
   if (!req.body) {
     res.status(400).send({
       message: "Content can not be empty!"
@@ -37,7 +37,7 @@ console.log(req.body)
 };
 
 const parseDate = (date) => {
-  if(date) {
+  if (date) {
     return date
   } else {
     return dayjs().format('YYYY-MM-DD');

@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+// @import "~materialize-css/dist/css/materialize.min.css";
+// @import '~react-day-picker/lib/style.css';
+
+body {
+  // font-family: "Open Sans", serif;
+  // font-size: 19px;
+  font-family: SF Pro Display;
+  font-style: normal;
+  font-size: 18px;
+  background-color: #f9f9f9;
+}
+
+.currency {
+  max-width: 560px;
+  width: 100%;
+}
+
+.currency__header {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+h4 {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  max-width: 560px;
+  padding: 20px;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  max-width: 1024px;
+  height: 680px;
+  background: #ffffff;
+  box-shadow: 0px 4px 44px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 24px;
+}
+.DayPicker {
+  display: flex;
+  justify-content: center;
+  font-size: unset;
+    border: 1px solid #d9d9d9;
+
+}
+.date-picker__wrapper {
+  position: absolute;
+  background: #ffffff;
+  // border: 1px solid #d9d9d9;
+  & input {
+    font-size: 16px;
+    width: 560px;
+    height: 52px;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    border-radius: 2px;
+    padding-left: 20px;
+    color: grey;
+  }
+}
+
+.DayPicker-Weekday {
+  color: #ff4d4f;
+  font-family: SF Pro Display;
+  font-style: normal;
+}
+
+.DayPicker-Day--today{
+  color: #ff4d4f;;
+}
+
+.DayPicker-NavButton--prev {
+  background-image: url("../src/img/rectangle_l.svg");
+}
+
+.DayPicker-NavButton--next {
+  background-image: url("../src/img/rectangle_r.svg");
+}
+
+.icon_usd {
+  width: 40px;
+  height: 32px;
+  background: url("../src/img/css_sprites.png") -78px -64px;
+  padding-left: 14px;
+}
+
+.icon_rub {
+  width: 40px;
+  height: 32px;
+  background: url("../src/img/css_sprites.png") -10px -64px;
+  padding-left: 14px;
+}
+
+.icon_kzt {
+  width: 40px;
+  height: 32px;
+  background: url("../src/img/css_sprites.png") -76px -10px;
+  padding-left: 14px;
+}
+
+.icon_eur {
+  width: 40px;
+  height: 32px;
+  background: url("../src/img/css_sprites.png") -10px -10px;
+  padding-left: 14px;
+}
+
+.currency__result {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+$ratesPadding: 15px;
+
+.currency__result-usd {
+  display: flex;
+  align-items: center;
+  padding-top: $ratesPadding;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #d9d9d9;
+  padding-left: 12px;
+}
+
+.currency__result-rub {
+  display: flex;
+  align-items: center;
+  padding-top: $ratesPadding;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #d9d9d9;
+  padding-left: 12px;
+}
+
+.currency__result-kzt {
+  display: flex;
+  align-items: center;
+  padding-top: $ratesPadding;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #d9d9d9;
+  padding-left: 12px;
+}
+
+.currency__result-eur {
+  display: flex;
+  align-items: center;
+  padding-top: $ratesPadding;
+  padding-bottom: 15px;
+  padding-left: 12px;
+}
+
+.currency__result-date {
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #d9d9d9;
+  padding-left: 12px;
+}

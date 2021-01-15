@@ -20,57 +20,57 @@ const getDate = (num) => {
 const setToDataBase = (yearData) => {
     yearData.map((daylyData, index) => {
         // console.log('parseSheets', daylyData)
-      
-     // nbkr.create();
-    const nbkr = new NbkrCurrency({
-        usd: (daylyData.usd),
-        eur: (daylyData.eur),
-        kzt: (daylyData.kzt),
-        rub: (daylyData.rub),
-        nbkr_date: (daylyData.nbkr_date),
-        created_date: new Date(),
-        updated_date: new Date(),
-        created_by: 1
-      });
-      
-      
-      NbkrCurrency.create(nbkr, (err, data) => {
-  
-      });
+
+        // nbkr.create();
+        const nbkr = new NbkrCurrency({
+            usd: (daylyData.usd),
+            eur: (daylyData.eur),
+            kzt: (daylyData.kzt),
+            rub: (daylyData.rub),
+            nbkr_date: (daylyData.nbkr_date),
+            created_date: new Date(),
+            updated_date: new Date(),
+            created_by: 1
+        });
+
+
+        NbkrCurrency.create(nbkr, (err, data) => {
+
+        });
     })
 }
 
 
 XlsxPopulate.fromFileAsync("./dailyrus.xlsx")
-.then(workbook => {
-    
-    const sheets = workbook.sheets();
-    const parseSheets = {};
-    
-    sheets.map((sheet) => {
-        // return sheet.usedRange().value();
-        const [header, ...rows] = sheet.usedRange().value();
-        let formattedDates = [];
-        rows.map((row) => {
-            if (row[0]) {
-                let nbkrData = {}
-                row.map((item, index) => {
-                    if (header[index] === 'date') {
-                        Object.assign(nbkrData, { nbkr_date: getDate(item)})
-                    } else {
-                        Object.assign(nbkrData, { [header[index]] : item})
-                    }
-                })
-                return formattedDates.push(nbkrData)
-            }
+    .then(workbook => {
+
+        const sheets = workbook.sheets();
+        const parseSheets = {};
+
+        sheets.map((sheet) => {
+            // return sheet.usedRange().value();
+            const [header, ...rows] = sheet.usedRange().value();
+            let formattedDates = [];
+            rows.map((row) => {
+                if (row[0]) {
+                    let nbkrData = {}
+                    row.map((item, index) => {
+                        if (header[index] === 'date') {
+                            Object.assign(nbkrData, { nbkr_date: getDate(item) })
+                        } else {
+                            Object.assign(nbkrData, { [header[index]]: item })
+                        }
+                    })
+                    return formattedDates.push(nbkrData)
+                }
+            })
+            return Object.assign(parseSheets, { [sheet.name()]: formattedDates })
         })
-        return Object.assign(parseSheets, { [sheet.name()] : formattedDates }) 
-    })
-    Object.keys(parseSheets).map((key, index) => {
-        console.log(parseSheets[key])
-        setToDataBase(parseSheets[key])
-    })
-    // setToDataBase(parseSheets['2012'])
-});
+        Object.keys(parseSheets).map((key, index) => {
+            console.log(parseSheets[key])
+            setToDataBase(parseSheets[key])
+        })
+        // setToDataBase(parseSheets['2012'])
+    });
 
 
